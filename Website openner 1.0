@@ -1,0 +1,68 @@
+from tkinter import *
+from tkinter import font
+import webbrowser
+
+root = Tk()
+logo = PhotoImage(file='Logo.png')# the icon on the top left corner of the window, change this to whatever you want
+
+#click events---------------------------------------------------------------------------------
+#these events will happen when the buttons are clicked
+def YTclicked():
+    webbrowser.open('https://www.youtube.com')
+def RBLXclicked():
+    webbrowser.open('https://www.roblox.com/home')
+def ChessClicked():
+    webbrowser.open('https://chess.com/play/online')
+def NETFLIXclicked():
+    webbrowser.open('https://netflix.com/browse')
+def MEETclicked():
+    webbrowser.open('https://meet.google.com/noz-bczc-tok')
+
+# widget Display --------------------------------------------------------------------------------
+# makes making new labels and buttons easier
+def LabelDSP(Strang, xpos, ypos, size=20):
+    Labl = Label(root, text=Strang)
+    Labl.config(background="#7a7b82", 
+    foreground="#fafafa", 
+    font=('arial',size),
+    relief=SUNKEN, 
+    bd=5)
+    Labl.place(x=xpos, y=ypos)
+
+def ButtonDSP(strang, cmd, xpos=0, ypos=0):
+    buton = Button(root, text=strang) 
+    buton.config(
+        fg="#fafafa",
+        bg="#7a7b82",
+        font=('arial', 15, 'bold'),
+        command=cmd,
+        activebackground="#bababa",
+        activeforeground="#282933"
+    )   
+    buton.place(x=xpos, y=ypos)
+
+# Buttons -------------------------------------------------------------------------------------
+def buttons():
+    ButtonDSP('YouTube', YTclicked, 5, 50)
+    ButtonDSP('Roblox', RBLXclicked, 110, 50)
+    ButtonDSP('Chess', ChessClicked, 196, 50)
+    ButtonDSP('Netflix', NETFLIXclicked, 60, 100)
+    ButtonDSP('Meet', MEETclicked, 140, 100)
+
+# labels---------------------------------------------------------------------------------------
+def labels():
+    LabelDSP('Web Open', 65, 0)
+    LabelDSP('made by Zain', 64, 150, 16)
+
+# sets up and configures the window
+def window():
+    root.title("Webopen")
+    root.iconphoto(True, logo)
+    root.geometry("276x200")
+    root.config(background="#565861")
+    root.mainloop()
+
+#executes all the functions
+labels()
+buttons()
+window()
